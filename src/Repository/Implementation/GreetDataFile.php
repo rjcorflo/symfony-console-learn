@@ -1,7 +1,7 @@
 <?php
 namespace RJ\Repository\Implementation;
 
-use RJ\GreetDataInterface;
+use RJ\Repository\GreetDataInterface;
 use Symfony\Component\Yaml\Yaml;
 
 class GreetDataFile implements GreetDataInterface
@@ -45,7 +45,9 @@ class GreetDataFile implements GreetDataInterface
      */
     public function getNumberOfGreetings(string $name) : int
     {
-        return $this->greetings[$name] ?? 0;
+        $cleanName = $this->sanitizeName($name);
+
+        return $this->greetings[$cleanName] ?? 0;
     }
 
     /**
@@ -56,7 +58,8 @@ class GreetDataFile implements GreetDataInterface
         int $numberOfGreeting
     ) : void
     {
-        $this->greetings[$name] = $numberOfGreeting;
+        $cleanName = $this->sanitizeName($name);
+        $this->greetings[$cleanName] = $numberOfGreeting;
     }
 
     /**
@@ -64,8 +67,15 @@ class GreetDataFile implements GreetDataInterface
      */
     public function incrementNumberOfGreetings(string $name) : void
     {
-        $actualNumberOfGreetings = $this->greetings[$name] ?? 0;
-
+        $cleanName = $this->sanitizeName($name);
+        $actualNumberOfGreetings = $this->greetings[$cleanName] ?? 0;
         $this->setNumberOfGreeting($name, $actualNumberOfGreetings + 1);
+    }
+
+    protected function sanitizeName(string $name) : string
+    {
+        $cleanName = filter_var(strtolower($name), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+        return $cleanName;
     }
 }
