@@ -1,0 +1,24 @@
+{
+    "name": "rjcorflo/symfony-console-learn",
+    "description": "A simple console app to learn Symfony Console component.",
+    "require": {
+        "symfony/console": "^3.2",
+        "pimple/pimple": "^3.0",
+        "symfony/yaml": "^3.2"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "\\RJ\\": "src"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rjcorflo",
+            "email": "rj.corchero@gmail.com"
+        }
+    ]
+}
