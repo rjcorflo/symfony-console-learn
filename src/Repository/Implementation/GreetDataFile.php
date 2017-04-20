@@ -45,7 +45,7 @@ class GreetDataFile implements GreetDataInterface
      */
     public function getNumberOfGreetings(string $name) : int
     {
-        $cleanName = $this->sanitizeName($name);
+        $cleanName = $this->sanitizeAndLowercaseName($name);
 
         return $this->greetings[$cleanName] ?? 0;
     }
@@ -58,7 +58,7 @@ class GreetDataFile implements GreetDataInterface
         int $numberOfGreeting
     ) : void
     {
-        $cleanName = $this->sanitizeName($name);
+        $cleanName = $this->sanitizeAndLowercaseName($name);
         $this->greetings[$cleanName] = $numberOfGreeting;
     }
 
@@ -67,12 +67,12 @@ class GreetDataFile implements GreetDataInterface
      */
     public function incrementNumberOfGreetings(string $name) : void
     {
-        $cleanName = $this->sanitizeName($name);
+        $cleanName = $this->sanitizeAndLowercaseName($name);
         $actualNumberOfGreetings = $this->greetings[$cleanName] ?? 0;
         $this->setNumberOfGreeting($name, $actualNumberOfGreetings + 1);
     }
 
-    protected function sanitizeName(string $name) : string
+    protected function sanitizeAndLowercaseName(string $name) : string
     {
         $cleanName = filter_var(strtolower($name), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 
