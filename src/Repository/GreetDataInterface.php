@@ -6,11 +6,12 @@
  * Time: 21:51
  */
 
-namespace RJ;
+namespace RJ\Repository;
 
 /**
- * This interface declare
+ * Greeting repository interface.
  *
+ * Provide three methods that control how to retrieve, set and increment the number of greeting for a given name.
  *
  */
 interface GreetDataInterface
