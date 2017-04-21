@@ -74,7 +74,7 @@ class GreetDataFile implements GreetDataInterface
 
     protected function sanitizeAndLowercaseName(string $name) : string
     {
-        $cleanName = filter_var(strtolower($name), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $cleanName =  strtolower(\URLify::transliterate($name));
 
         return $cleanName;
     }
