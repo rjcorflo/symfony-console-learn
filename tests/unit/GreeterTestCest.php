@@ -2,8 +2,9 @@
 namespace Tests;
 
 use Codeception\Example;
+use Codeception\Util\Stub;
 use RJ\Greeter;
-use RJ\Repository\GreetDataInterface;
+use RJ\Repository\Implementation\GreetDataFile;
 
 class GreeterTestCest
 {
@@ -11,51 +12,13 @@ class GreeterTestCest
 
     public function _before(\UnitTester $tester)
     {
-        $this->dummyGreeterInterface = new class implements GreetDataInterface
-        {
-            private $greetings = [
+        $this->dummyGreeterInterface = Stub::make(GreetDataFile::class, [
+            'greetings' => [
                 'perro' => 3
-            ];
-
-            /**
-             * @inheritdoc
-             */
-            public function getNumberOfGreetings(string $name) : int
-            {
-                $cleanName = $this->sanitizeAndLowercaseName($name);
-
-                return $this->greetings[$cleanName] ?? 0;
+            ],
+            '__destruct' => function () {
             }
-
-            /**
-             * @inheritdoc
-             */
-            public function setNumberOfGreeting(
-                string $name,
-                int $numberOfGreeting
-            ) : void
-            {
-                $cleanName = $this->sanitizeAndLowercaseName($name);
-                $this->greetings[$cleanName] = $numberOfGreeting;
-            }
-
-            /**
-             * @inheritdoc
-             */
-            public function incrementNumberOfGreetings(string $name) : void
-            {
-                $cleanName = $this->sanitizeAndLowercaseName($name);
-                $actualNumberOfGreetings = $this->greetings[$cleanName] ?? 0;
-                $this->setNumberOfGreeting($name, $actualNumberOfGreetings + 1);
-            }
-
-            protected function sanitizeAndLowercaseName(string $name) : string
-            {
-                $cleanName = strtolower(\URLify::transliterate($name));
-
-                return $cleanName;
-            }
-        };
+        ]);
     }
 
     public function _after(\UnitTester $tester)
