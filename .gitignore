@@ -1,12 +1,12 @@
-# Resources
-resources
-!resources/.gitkeep
+# IDE
+.idea/*
 
-# Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
+# Resources
+/resources/*
+!/resources/.gitkeep
+
+# Codeception
+/tests/_output
 
 # Managed by Composer
 /vendor/
-
-tests/_output/*
