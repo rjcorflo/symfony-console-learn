@@ -5,5 +5,5 @@
  */
 $container = require __DIR__ . '/bootstrap.php';
 
-$application = $container->get('app');
-$application->run();
+
+$container->get('app')->run();
