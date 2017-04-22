@@ -1,7 +1,7 @@
 <?php
 namespace RJ\Command;
 
-use RJ\Greeter;
+use RJ\Service\Greeter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -55,5 +55,4 @@ class GreetCommand extends Command
             $io->text(sprintf('(%d times)', $numberOfTimesGreeted));
         }
     }
-
 }

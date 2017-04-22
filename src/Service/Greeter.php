@@ -1,5 +1,5 @@
 <?php
-namespace RJ;
+namespace RJ\Service;
 
 use RJ\Repository\GreetDataInterface;
 

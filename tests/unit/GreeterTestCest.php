@@ -3,8 +3,8 @@ namespace Tests;
 
 use Codeception\Example;
 use Codeception\Util\Stub;
-use RJ\Greeter;
 use RJ\Repository\Implementation\GreetDataFile;
+use RJ\Service\Greeter;
 
 class GreeterTestCest
 {

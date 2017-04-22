@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: RJ Corchero
- * Date: 20/04/2017
- * Time: 21:51
- */
-
 namespace RJ\Repository;
 
 /**
