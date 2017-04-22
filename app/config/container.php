@@ -5,10 +5,12 @@ use RJ\Repository\GreetDataInterface;
 use RJ\Repository\Implementation\GreetDataFile;
 use function DI\get;
 use function DI\object;
+use function DI\string;
 
 return [
     // Parameters
-    'greeting.filename' => 'greetings.yml',
+    'path.resources' => __DIR__ . '/../../resources/',
+    'greeting.filename' => string('{path.resources}/greetings.yml'),
 
     // Bind interface to implementation
     GreetDataInterface::class => object(GreetDataFile::class)->constructor(get('greeting.filename')),
