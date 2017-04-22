@@ -11,13 +11,14 @@ return [
     'greeting.filename' => 'greetings.yml',
 
     // Bind interface to implementation
-    GreetDataInterface::class => object(GreetDataFile::class)
-        ->constructor(get('greeting.filename')),
+    GreetDataInterface::class => object(GreetDataFile::class)->constructor(get('greeting.filename')),
 
+    // App commands
     'commands' => [
         get(GreetCommand::class)
     ],
 
+    // App construction
     'app' => function (ContainerInterface $c) {
         $application = new \Symfony\Component\Console\Application();
 
