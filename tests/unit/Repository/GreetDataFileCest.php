@@ -27,76 +27,76 @@ class GreetDataFileCest
         }
     }
 
-    public function checkFileIsCreatedOnConstruct(UnitTester $tester)
+    public function checkFileIsCreatedOnConstruct(UnitTester $I)
     {
-        $tester->amInPath($this->directory);
-        $tester->dontSeeFileFound($this->file);
+        $I->amInPath($this->directory);
+        $I->dontSeeFileFound($this->file);
 
-        $tester->amGoingTo('create Data object');
+        $I->amGoingTo('create Data object');
         $greetData = new GreetDataFile($this->fileWithDir);
 
-        $tester->amGoingTo('destruct object');
+        $I->amGoingTo('destruct object');
         unset($greetData);
 
-        $tester->expectTo('see file prueba.yml exists');
-        $tester->seeFileFound($this->file);
+        $I->expectTo('see file prueba.yml exists');
+        $I->seeFileFound($this->file);
 
-        $tester->deleteFile($this->file);
+        $I->deleteFile($this->file);
     }
 
-    public function seeGreetingCorrectlyUpdateOnFile(UnitTester $tester)
+    public function seeGreetingCorrectlyUpdateOnFile(UnitTester $I)
     {
-        $tester->amInPath($this->directory);
-        $tester->dontSeeFileFound($this->file);
+        $I->amInPath($this->directory);
+        $I->dontSeeFileFound($this->file);
 
-        $tester->amGoingTo('create Data Object');
+        $I->amGoingTo('create Data Object');
         $greetData = new GreetDataFile(__DIR__ . '/' . $this->file);
 
         $greetData->setNumberOfGreeting('nombre', 3);
         $greetData->incrementNumberOfGreetings('nuevo');
 
-        $tester->assertEquals(3, $greetData->getNumberOfGreetings('nombre'),
+        $I->assertEquals(3, $greetData->getNumberOfGreetings('nombre'),
             'check number of greetings are as expected');
-        $tester->assertEquals(1, $greetData->getNumberOfGreetings('nuevo'));
+        $I->assertEquals(1, $greetData->getNumberOfGreetings('nuevo'));
 
-        $tester->amGoingTo('destruct Data Object');
+        $I->amGoingTo('destruct Data Object');
         $greetData = null;
-        $tester->expectTo(sprintf('see the file %s created', $this->file));
-        $tester->seeFileFound($this->file);
+        $I->expectTo(sprintf('see the file %s created', $this->file));
+        $I->seeFileFound($this->file);
 
-        $tester->expectTo('see file has expected content');
-        $tester->canSeeInThisFile('nombre: 3');
-        $tester->canSeeInThisFile('nuevo: 1');
+        $I->expectTo('see file has expected content');
+        $I->canSeeInThisFile('nombre: 3');
+        $I->canSeeInThisFile('nuevo: 1');
 
-        $tester->deleteFile($this->file);
+        $I->deleteFile($this->file);
     }
 
-    public function loadDataFromFileOnConstruct(UnitTester $tester)
+    public function loadDataFromFileOnConstruct(UnitTester $I)
     {
-        $tester->amInPath($this->directory);
-        $tester->dontSeeFileFound($this->file);
+        $I->amInPath($this->directory);
+        $I->dontSeeFileFound($this->file);
 
-        $tester->amGoingTo('write content in file');
+        $I->amGoingTo('write content in file');
 
         $content = <<<"EOT"
 perro: 1
 nombre: 3
 EOT;
 
-        $tester->writeToFile($this->file, $content);
-        $tester->canSeeFileFound($this->file);
+        $I->writeToFile($this->file, $content);
+        $I->canSeeFileFound($this->file);
 
-        $tester->amGoingTo('create Data Object');
+        $I->amGoingTo('create Data Object');
         $greetData = new GreetDataFile($this->fileWithDir);
 
-        $tester->expect('that the data from file has been loaded');
-        $tester->assertEquals(1, $greetData->getNumberOfGreetings('perro'),
+        $I->expect('that the data from file has been loaded');
+        $I->assertEquals(1, $greetData->getNumberOfGreetings('perro'),
             'perro has been greeted 3 times');
-        $tester->assertEquals(3, $greetData->getNumberOfGreetings('nombre'),
+        $I->assertEquals(3, $greetData->getNumberOfGreetings('nombre'),
             'nombre has been greeted 1 times');
 
-        $tester->amGoingTo('destruct object and delete file');
+        $I->amGoingTo('destruct object and delete file');
         $greetData = null;
-        $tester->deleteFile($this->file);
+        $I->deleteFile($this->file);
     }
 }
