@@ -2,6 +2,7 @@
     "name": "rjcorflo/symfony-console-learn",
     "description": "A simple console app to learn Symfony Console component.",
     "require": {
+        "php": "^7.0",
         "symfony/console": "^3.2",
         "symfony/yaml": "^3.2",
         "jbroadway/urlify": "^1.0",
