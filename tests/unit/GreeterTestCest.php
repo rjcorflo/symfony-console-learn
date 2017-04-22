@@ -59,6 +59,18 @@ class GreeterTestCest
         });
     }
 
+    public function testGreetYell(\UnitTester $tester)
+    {
+        $greeter = new Greeter($this->dummyGreeterInterface);
+        $name = 'Ramon';
+        $nameUppercase = 'RAMON';
+
+        $tester->amGoingTo('greet someone yelling');
+        $tester->expectTo('see greeting in uppercase letter');
+        $tester->assertEquals('HELLO ' . $nameUppercase,
+            $greeter->greet($name, true));
+    }
+
     public function testGreetStandardToAlreadyGreetedName(\UnitTester $tester)
     {
         $greeter = new Greeter($this->dummyGreeterInterface);
