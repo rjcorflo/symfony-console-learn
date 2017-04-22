@@ -70,4 +70,33 @@ class GreetDataFileCest
 
         $tester->deleteFile($this->file);
     }
+
+    public function loadDataFromFileOnConstruct(UnitTester $tester)
+    {
+        $tester->amInPath($this->directory);
+        $tester->dontSeeFileFound($this->file);
+
+        $tester->amGoingTo('write content in file');
+
+        $content = <<<"EOT"
+perro: 1
+nombre: 3
+EOT;
+
+        $tester->writeToFile($this->file, $content);
+        $tester->canSeeFileFound($this->file);
+
+        $tester->amGoingTo('create Data Object');
+        $greetData = new GreetDataFile($this->fileWithDir);
+
+        $tester->expect('that the data from file has been loaded');
+        $tester->assertEquals(1, $greetData->getNumberOfGreetings('perro'),
+            'perro has been greeted 3 times');
+        $tester->assertEquals(3, $greetData->getNumberOfGreetings('nombre'),
+            'nombre has been greeted 1 times');
+
+        $tester->amGoingTo('destruct object and delete file');
+        $greetData = null;
+        $tester->deleteFile($this->file);
+    }
 }
