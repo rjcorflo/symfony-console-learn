@@ -1,5 +1,5 @@
 <?php
-namespace Tests;
+namespace Service;
 
 use Codeception\Example;
 use Codeception\Util\Stub;
