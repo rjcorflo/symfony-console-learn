@@ -1,4 +1,5 @@
 <?php
+
 namespace Service;
 
 use Codeception\Example;
@@ -14,10 +15,10 @@ class GreeterTestCest
     {
         $this->dummyGreeterInterface = Stub::make(GreetDataFile::class, [
             'greetings' => [
-                'perro' => 3
+                'perro' => 3,
             ],
             '__destruct' => function () {
-            }
+            },
         ]);
     }
 
@@ -37,12 +38,12 @@ class GreeterTestCest
 
         $I->wantTo('Check standard functionality.');
 
-        $I->amGoingTo('greet to ' . $example['name']);
-        $I->expectTo('see Hello ' . $example['name']);
-        $I->assertEquals('Hello ' . $example['name'],
+        $I->amGoingTo('greet to '.$example['name']);
+        $I->expectTo('see Hello '.$example['name']);
+        $I->assertEquals('Hello '.$example['name'],
             $greeter->greet($example['name']));
 
-        $I->amGoingTo('see number of times ' . $example['name'] . ' has been greeted');
+        $I->amGoingTo('see number of times '.$example['name'].' has been greeted');
         $I->expectTo('see the numeber of times is 1');
         $I->assertEquals($example['count'],
             $greeter->countGreetings($example['name']));
@@ -67,7 +68,7 @@ class GreeterTestCest
 
         $I->amGoingTo('greet someone yelling');
         $I->expectTo('see greeting in uppercase letter');
-        $I->assertEquals('HELLO ' . $nameUppercase,
+        $I->assertEquals('HELLO '.$nameUppercase,
             $greeter->greet($name, true));
     }
 
@@ -77,7 +78,7 @@ class GreeterTestCest
 
         $name = 'perro';
 
-        $I->assertEquals('Hello ' . $name, $greeter->greet($name));
+        $I->assertEquals('Hello '.$name, $greeter->greet($name));
         $I->assertEquals(4, $greeter->countGreetings($name));
     }
 
@@ -88,15 +89,15 @@ class GreeterTestCest
         $firstName = 'ramon';
         $secondName = 'otro';
 
-        $I->assertEquals('Hello ' . $firstName,
+        $I->assertEquals('Hello '.$firstName,
             $greeter->greet($firstName));
         $I->assertEquals(1, $greeter->countGreetings($firstName));
 
-        $I->assertEquals('Hello ' . $secondName,
+        $I->assertEquals('Hello '.$secondName,
             $greeter->greet($secondName));
         $I->assertEquals(1, $greeter->countGreetings($secondName));
 
-        $I->assertEquals('Hello ' . $firstName,
+        $I->assertEquals('Hello '.$firstName,
             $greeter->greet($firstName));
         $I->assertEquals(2, $greeter->countGreetings($firstName));
     }

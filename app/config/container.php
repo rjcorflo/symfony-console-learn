@@ -1,4 +1,5 @@
 <?php
+
 use Psr\Container\ContainerInterface;
 use RJ\Command\GreetCommand;
 use RJ\Command\RandomCommand;
@@ -10,7 +11,7 @@ use function DI\string;
 
 return [
     // Parameters
-    'path.resources' => __DIR__ . '/../../resources/',
+    'path.resources'    => __DIR__.'/../../resources/',
     'greeting.filename' => string('{path.resources}/greetings.yml'),
 
     // Bind interface to implementation
@@ -19,7 +20,7 @@ return [
     // App commands
     'commands' => [
         get(GreetCommand::class),
-        get(RandomCommand::class)
+        get(RandomCommand::class),
     ],
 
     // App construction
@@ -29,5 +30,5 @@ return [
         $application->addCommands($c->get('commands'));
 
         return $application;
-    }
+    },
 ];

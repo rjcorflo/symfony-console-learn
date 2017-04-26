@@ -1,4 +1,5 @@
 <?php
+
 namespace RJ\Service;
 
 use RJ\Repository\GreetDataInterface;
@@ -21,10 +22,10 @@ class Greeter
     }
 
     /**
-     * Builds the greeting for someone (you can yell on it if you want!)
+     * Builds the greeting for someone (you can yell on it if you want!).
      *
-     * @param  string $name
-     * @param  bool $yell wanna yell?
+     * @param string $name
+     * @param bool   $yell wanna yell?
      *
      * @return string
      */
@@ -44,7 +45,7 @@ class Greeter
     /**
      * Will tell you how many times you greet someone.
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return int
      */

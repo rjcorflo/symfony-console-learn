@@ -1,4 +1,5 @@
 <?php
+
 namespace RJ\Command;
 
 use RJ\Service\Greeter;
@@ -12,12 +13,12 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class GreetCommand extends Command
 {
     /**
-     * @var Greeter $greeter
+     * @var Greeter
      */
     protected $greeter;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param Greeter $greeter
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace Helper;
 
 // here you can define custom actions
@@ -11,7 +12,7 @@ class Unit extends \Codeception\Module
         $code = null;
         $msg = null;
         if (is_object($error)) {
-            /** @var $error \Error **/
+            /** @var $error \Error * */
             $class = get_class($error);
             $msg = $error->getMessage();
             $code = $error->getCode();
@@ -39,6 +40,6 @@ class Unit extends \Codeception\Module
             $this->assertTrue(true); // increment assertion counter
             return;
         }
-        $this->fail("Expected Error to be thrown, but nothing was caught");
+        $this->fail('Expected Error to be thrown, but nothing was caught');
     }
 }

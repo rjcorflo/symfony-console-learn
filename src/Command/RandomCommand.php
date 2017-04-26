@@ -1,4 +1,5 @@
 <?php
+
 namespace RJ\Command;
 
 use RJ\Service\Greeter;
@@ -11,7 +12,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class RandomCommand extends Command
 {
     /**
-     * @var Greeter $greeter
+     * @var Greeter
      */
     protected $greeter;
 
@@ -38,8 +39,8 @@ class RandomCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $initialNumber = (int)$input->getArgument('initial-number');
-        $endNumber = (int)$input->getArgument('end-number');
+        $initialNumber = (int) $input->getArgument('initial-number');
+        $endNumber = (int) $input->getArgument('end-number');
 
         $number = rand($initialNumber, $endNumber);
 

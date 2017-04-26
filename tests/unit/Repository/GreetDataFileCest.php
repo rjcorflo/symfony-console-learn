@@ -1,4 +1,5 @@
 <?php
+
 namespace Repository;
 
 use RJ\Repository\Implementation\GreetDataFile;
@@ -16,7 +17,7 @@ class GreetDataFileCest
     {
         $this->directory = __DIR__;
         $this->file = 'prueba.yml';
-        $this->fileWithDir = $this->directory . '/' . $this->file;
+        $this->fileWithDir = $this->directory.'/'.$this->file;
     }
 
     public function _after(UnitTester $I)
@@ -50,7 +51,7 @@ class GreetDataFileCest
         $I->dontSeeFileFound($this->file);
 
         $I->amGoingTo('create Data Object');
-        $greetData = new GreetDataFile(__DIR__ . '/' . $this->file);
+        $greetData = new GreetDataFile(__DIR__.'/'.$this->file);
 
         $greetData->setNumberOfGreeting('nombre', 3);
         $greetData->incrementNumberOfGreetings('nuevo');
@@ -78,7 +79,7 @@ class GreetDataFileCest
 
         $I->amGoingTo('write content in file');
 
-        $content = <<<"EOT"
+        $content = <<<'EOT'
 perro: 1
 nombre: 3
 EOT;

@@ -1,4 +1,5 @@
 <?php
+
 namespace RJ\Repository\Implementation;
 
 use RJ\Repository\GreetDataInterface;
@@ -7,17 +8,17 @@ use Symfony\Component\Yaml\Yaml;
 class GreetDataFile implements GreetDataInterface
 {
     /**
-     * @var string $file
+     * @var string
      */
     protected $file;
 
     /**
-     * @var array $greetings
+     * @var array
      */
     protected $greetings;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $file
      */
@@ -33,7 +34,7 @@ class GreetDataFile implements GreetDataInterface
     }
 
     /**
-     * On destruction dumps content of greeting to file
+     * On destruction dumps content of greeting to file.
      */
     public function __destruct()
     {
@@ -41,7 +42,7 @@ class GreetDataFile implements GreetDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getNumberOfGreetings(string $name) : int
     {
@@ -51,7 +52,7 @@ class GreetDataFile implements GreetDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setNumberOfGreeting(
         string $name,
@@ -62,7 +63,7 @@ class GreetDataFile implements GreetDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function incrementNumberOfGreetings(string $name) : void
     {
@@ -73,7 +74,7 @@ class GreetDataFile implements GreetDataInterface
 
     protected function sanitizeAndLowercaseName(string $name) : string
     {
-        $cleanName =  strtolower(\URLify::transliterate($name));
+        $cleanName = strtolower(\URLify::transliterate($name));
 
         return $cleanName;
     }
