@@ -1,9 +1,13 @@
 language: php
 
 matrix:
-  fast_finish: true
-  include:
-    - php: 7.1
+    fast_finish: true
+    include:
+        - php: 7.1
+
+branches:
+    only:
+        - master
 
 before_install:
     - composer selfupdate
