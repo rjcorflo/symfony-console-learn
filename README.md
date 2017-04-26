@@ -3,6 +3,7 @@
 A simple console app made to learn Symfony Console component.
 
 [![Build Status](https://travis-ci.org/rjcorflo/SymfonyConsoleLearn.svg?branch=master)](https://travis-ci.org/rjcorflo/SymfonyConsoleLearn)
+[![StyleCI](https://styleci.io/repos/88901081/shield?branch=master)](https://styleci.io/repos/88901081)
 
 ### Base application
 
