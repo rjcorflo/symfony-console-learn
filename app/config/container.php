@@ -1,6 +1,7 @@
 <?php
 use Psr\Container\ContainerInterface;
 use RJ\Command\GreetCommand;
+use RJ\Command\RandomCommand;
 use RJ\Repository\GreetDataInterface;
 use RJ\Repository\Implementation\GreetDataFile;
 use function DI\get;
@@ -17,7 +18,8 @@ return [
 
     // App commands
     'commands' => [
-        get(GreetCommand::class)
+        get(GreetCommand::class),
+        get(RandomCommand::class)
     ],
 
     // App construction
