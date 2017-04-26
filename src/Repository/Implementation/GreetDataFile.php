@@ -56,8 +56,7 @@ class GreetDataFile implements GreetDataInterface
     public function setNumberOfGreeting(
         string $name,
         int $numberOfGreeting
-    ) : void
-    {
+    ) : void {
         $cleanName = $this->sanitizeAndLowercaseName($name);
         $this->greetings[$cleanName] = $numberOfGreeting;
     }
