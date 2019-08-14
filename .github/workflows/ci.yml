@@ -4,9 +4,17 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+    steps:
+    - uses: actions/checkout@master
+    - name: Composer install
+      uses: pxgamer/composer-action@v1.0.1
+      with:
+        args: install
+  
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Composer install
