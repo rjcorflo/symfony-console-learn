@@ -1,13 +1,13 @@
 <?php
 
+use function DI\get;
+use function DI\object;
+use function DI\string;
 use Psr\Container\ContainerInterface;
 use RJ\Command\GreetCommand;
 use RJ\Command\RandomCommand;
 use RJ\Repository\GreetDataInterface;
 use RJ\Repository\Implementation\GreetDataFile;
-use function DI\get;
-use function DI\object;
-use function DI\string;
 
 return [
     // Parameters

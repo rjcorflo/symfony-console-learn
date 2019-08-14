@@ -19,6 +19,7 @@ class Unit extends \Codeception\Module
         } else {
             $class = $error;
         }
+
         try {
             $callback();
         } catch (\Error $e) {
